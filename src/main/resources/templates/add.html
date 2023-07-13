@@ -10,20 +10,20 @@
 
 <form method="post" action="/" th:object="${product}">
     <div>
-    <label for="name">Nazwa</label>
-    <input type="text" th:field="*{name}" id="name">
+        <label for="name">Nazwa</label>
+        <input type="text" th:field="*{name}" id="name">
     </div>
     <div>
-    <label for="price">Cena</label>
-    <input type="number" th:field="*{price}" step="0.01" placeholder="0.00" id="price">
+        <label for="price">Cena</label>
+        <input type="number" th:field="*{price}" step="0.01" placeholder="0.00" id="price">
     </div>
     <div>
-    <label for="genre">Kategoria</label>
-    <select th:field="*{genre}" id="genre">
-        <option th:value="SPOŻYWCZE">SPOŻYWCZE</option>
-        <option th:value="DOMOWE">DOMOWE</option>
-        <option th:value="INNE">INNE</option>
-    </select>
+        <label for="genre">Kategoria</label>
+        <select th:field="*{genre}" id="genre">
+            <option th:value="SPOŻYWCZE">SPOŻYWCZE</option>
+            <option th:value="DOMOWE">DOMOWE</option>
+            <option th:value="INNE">INNE</option>
+        </select>
     </div>
     <button type="submit">Dodaj</button>
 </form>

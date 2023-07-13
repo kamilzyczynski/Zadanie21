@@ -6,9 +6,10 @@
 </head>
 <body>
 <h2 th:if="${genre != null}" th:text="|Lista produktów z kategorii ${genre}|"></h2>
-<h2 th:unless="${genre != null}" >Lista produktów z kategorii WSZYSTKIE</h2>
+<h2 th:unless="${genre != null}">Lista produktów z kategorii WSZYSTKIE</h2>
 <ol>
-    <li th:each="product:${products}" th:text="|Nazwa: ${product.name}, cena: ${product.price}zł, kategoria: ${product.genre}|"></li>
+    <li th:each="product:${products}"
+        th:text="|Nazwa: ${product.name}, cena: ${product.price}zł, kategoria: ${product.genre}|"></li>
 </ol>
 <p th:text="|Suma wszystkich produktów wynosi: ${sum}zł|"></p>
 
