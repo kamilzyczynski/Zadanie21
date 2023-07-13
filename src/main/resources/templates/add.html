@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Dodaj produkt</title>
@@ -8,7 +8,7 @@
 
 <h2>Dodaj kolejny produkt</h2>
 
-<form method="post" action="/" th:object="${product}">
+<form method="post" th:action="@{/}" th:object="${product}">
     <div>
         <label for="name">Nazwa</label>
         <input type="text" th:field="*{name}" id="name">
@@ -18,11 +18,11 @@
         <input type="number" th:field="*{price}" step="0.01" placeholder="0.00" id="price">
     </div>
     <div>
-        <label for="genre">Kategoria</label>
-        <select th:field="*{genre}" id="genre">
-            <option th:value="SPOŻYWCZE">SPOŻYWCZE</option>
-            <option th:value="DOMOWE">DOMOWE</option>
-            <option th:value="INNE">INNE</option>
+        <label for="category">Kategoria</label>
+        <select th:field="*{category}" id="category">
+            <option th:each="cat:${T(com.example.zadanie21.Category).values()}"
+                    th:value="${cat.name()}" th:text="${cat.getTranslation()}"
+            ></option>
         </select>
     </div>
     <button type="submit">Dodaj</button>

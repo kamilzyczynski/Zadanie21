@@ -3,15 +3,15 @@ package com.example.zadanie21;
 public class Product {
     private String name;
     private double price;
-    private Genre genre;
+    private Category category;
 
     public Product() {
     }
 
-    public Product(String name, double price, Genre genre) {
+    public Product(String name, double price, Category category) {
         this.name = name;
         this.price = price;
-        this.genre = genre;
+        this.category = category;
     }
 
     public String getName() {
@@ -30,11 +30,11 @@ public class Product {
         this.price = price;
     }
 
-    public Genre getGenre() {
-        return genre;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setGenre(Genre genre) {
-        this.genre = genre;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

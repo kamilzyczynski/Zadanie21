@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -9,12 +9,12 @@
 <h2>Lista produktów</h2>
 
 Wyświetl produkty z poszczególnych kategorii:
-<a href="/lista">Wszystkie</a> &nbsp;
-<a href="/lista?kategoria=SPOŻYWCZE">Art. spożywcze</a> &nbsp;
-<a href="/lista?kategoria=DOMOWE">Art. gosp. domowego</a> &nbsp;
-<a href="/lista?kategoria=INNE">Inne</a> <br><br><br>
+<a th:href="@{/lista}">Wszystkie</a> &nbsp;
+<a th:each="category:${T(com.example.zadanie21.Category).values()}"
+   th:href="@{|/lista?kategoria=${category.getTranslation()}|}"
+   th:text="${category.getTranslation()}"></a> &nbsp;
 
-<a href="/dodaj">Dodaj kolejny produkt</a>
+<a th:href="@{/dodaj}">Dodaj kolejny produkt</a>
 
 </body>
 </html>

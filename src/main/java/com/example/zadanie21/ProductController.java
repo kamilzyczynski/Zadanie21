@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Set;
+import java.util.List;
 
 @Controller
 public class ProductController {
@@ -17,32 +17,38 @@ public class ProductController {
     }
 
     @GetMapping("/")
-    public String home(Model model) {
-        Set<Product> products = repository.findAll();
-        model.addAttribute("products", products);
-        model.addAttribute("sum", repository.calculateSumForProducts(products));
+    public String home() {
         return "index";
     }
 
     @PostMapping("/")
-    public String addProduct(Product product, Model model) {
+    public String addProduct(Product product) {
         repository.addProduct(product);
         return "redirect:/";
     }
 
     @GetMapping("/lista")
-    public String list(@RequestParam(name = "kategoria", required = false) Genre genre, Model model) {
-        Set<Product> products;
-        if (genre == null) {
+    public String list(@RequestParam(name = "kategoria", required = false) String cat, Model model) {
+        List<Product> products;
+        Category category = null;
+
+        for (Category value : Category.values()) {
+            if (value.getTranslation().equals(cat)) {
+                category = value;
+                break;
+            }
+        }
+
+        if (category == null) {
             products = repository.findAll();
         } else {
-            products = repository.filterProductsByGenre(genre);
+            products = repository.filterProductsByCategory(category);
         }
         double sum = repository.calculateSumForProducts(products);
 
         model.addAttribute("products", products);
         model.addAttribute("sum", sum);
-        model.addAttribute("genre", genre);
+        model.addAttribute("category", category);
 
         return "list";
     }
