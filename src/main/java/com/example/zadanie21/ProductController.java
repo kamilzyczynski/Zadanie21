@@ -28,16 +28,8 @@ public class ProductController {
     }
 
     @GetMapping("/lista")
-    public String list(@RequestParam(name = "kategoria", required = false) String cat, Model model) {
+    public String list(@RequestParam(name = "kategoria", required = false) Category category, Model model) {
         List<Product> products;
-        Category category = null;
-
-        for (Category value : Category.values()) {
-            if (value.getTranslation().equals(cat)) {
-                category = value;
-                break;
-            }
-        }
 
         if (category == null) {
             products = repository.findAll();

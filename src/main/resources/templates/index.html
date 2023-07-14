@@ -11,8 +11,8 @@
 Wyświetl produkty z poszczególnych kategorii:
 <a th:href="@{/lista}">Wszystkie</a> &nbsp;
 <a th:each="category:${T(com.example.zadanie21.Category).values()}"
-   th:href="@{|/lista?kategoria=${category.getTranslation()}|}"
-   th:text="${category.getTranslation()}"></a> &nbsp;
+   th:href="@{|/lista?kategoria=${category.name()}|}"
+   th:text="|${category.getTranslation()}| + ' '"></a> &nbsp;
 
 <a th:href="@{/dodaj}">Dodaj kolejny produkt</a>
 
