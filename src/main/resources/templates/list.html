@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Produkty</title>
+</head>
+<body>
+<h2 th:if="${category != null}" th:text="|Lista produktów z kategorii ${category.getTranslation()}|"></h2>
+<h2 th:unless="${category != null}">Lista produktów z kategorii Wszystkie</h2>
+<ol>
+    <li th:each="product:${products}"
+        th:text="|Nazwa: ${product.name}, cena: ${product.price}zł, kategoria: ${product.category.getTranslation()}|"></li>
+</ol>
+<p th:text="|Suma wszystkich produktów wynosi: ${sum}zł|"></p>
+
+<a th:href="@{/}">Powrót do wyboru kategorii</a>
+</body>
+</html>
